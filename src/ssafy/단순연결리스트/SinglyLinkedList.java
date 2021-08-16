@@ -5,13 +5,13 @@ public class SinglyLinkedList {
 
 	// 첫번째 노드로 삽입하기
 	public void addFirstNode(String data) {
-		Node newNode = new Node(data, head);
-		head = newNode;
+		Node newNode = new Node(data, head); // 새로운 노드 생성
+		head = newNode;	// 리스트의 처음으로 지정
 	}
 
 	public Node getLastNode() {
-		for (Node currNode = head; currNode != null; currNode = currNode.link) {
-			if (currNode.link == null) { // 자신의 뒤에 아무도 없으면 자신이 막내
+		for (Node currNode = head; currNode != null; currNode = currNode.link) { // 링크 필드가 Null인 노드가 연결 리스트의 가장 마지막 노드이다.
+			if (currNode.link == null) { // 자신의 뒤에 아무도 없으면 자신이 막내 // 마지막 노드 찾을때까지 이동
 				return currNode;
 			}
 		}
@@ -21,7 +21,7 @@ public class SinglyLinkedList {
 	// 마지막 노드로 삽입하기
 	public void addLastNode(String data) {
 
-		if (head == null) {
+		if (head == null) { // 빈 리스트일때, 최초 노드 추가
 			addFirstNode(data);
 			return;
 		}
@@ -44,7 +44,7 @@ public class SinglyLinkedList {
 
 	// data를 데이터로 갖고있는 처음 만나는 노드 리턴
 	public Node getNode(String data) {
-		for (Node currNode = head; currNode != null; currNode = currNode.link) {
+		for (Node currNode = head; currNode != null; currNode = currNode.link) { 
 			if (currNode.data.equals(data)) {
 				return currNode;
 			}
