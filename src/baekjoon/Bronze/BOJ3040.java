@@ -1,7 +1,7 @@
 package com.day9;
 
 import java.util.Scanner;
-
+// 백설공주와 일곱난쟁이
 public class BOJ3040 {
 
 	static int[] nums;

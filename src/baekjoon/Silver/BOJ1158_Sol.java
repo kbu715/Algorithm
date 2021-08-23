@@ -31,7 +31,7 @@ public class BOJ1158_Sol {
 			}
 
 			// K번째 사람은 제거
-			sb.append(q.poll() + " ");
+			sb.append(q.poll() + ", ");
 		}
 
 		// Queue에 한사람만 남은 경우

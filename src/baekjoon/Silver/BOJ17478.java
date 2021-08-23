@@ -1,7 +1,7 @@
 package com.day1;
 
 import java.util.Scanner;
-
+// 재귀함수가 뭔가요?
 public class BOJ17478 {
 
 	public static void main(String[] args) {

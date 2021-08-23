@@ -3,7 +3,7 @@ package com.day13;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
-
+// 빵집
 public class BOJ3109_Sol {
 
 	static int R, C;

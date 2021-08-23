@@ -3,7 +3,7 @@ package com.day12;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
-
+// Z
 public class BOJ1074_Sol {
 
 	static int N;
