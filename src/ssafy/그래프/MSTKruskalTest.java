@@ -13,6 +13,7 @@ import java.util.StringTokenizer;
 
 public class MSTKruskalTest {
 
+	// 간선 정보 저장하는 객체 -> 정렬되어야함
 	static class Edge implements Comparable<Edge> {
 		int start, end, weight;
 
@@ -29,9 +30,9 @@ public class MSTKruskalTest {
 		}
 	}
 
-	static int[] parents; // 부모 원소를 관리 (트리처럼 사용)
-	static int V, E;
-	static Edge[] edgeList;
+	static int[] parents; // 부모 원소를 관리 (트리처럼 사용) // 사이클이 발생하는지 여부 체크
+	static int V, E; // Vertex, Edge
+	static Edge[] edgeList; // 간선들 저장하는 배열 -> 정렬되어야함
 
 	private static void make() {
 		parents = new int[V];
@@ -83,11 +84,12 @@ public class MSTKruskalTest {
 		make(); // 모든 정점을 각각으로 집합으로 만들고 출발
 
 		// 간선 하나씩 시도하며 트리 만들어 감.
-		int cnt = 0, result = 0;
+		int cnt = 0, result = 0; // cnt: 연결 간선 수 result: 최소비용들의 합
 		for (Edge e : edgeList) {
-			if (union(e.start, e.end)) {
-				result += e.weight;
-				if (++cnt == V - 1)
+			if (union(e.start, e.end)) {  // 시작정점 - 끝정점을 연결 시도
+				// 서로 다른 집합이었다가 합쳐지는 게 가능한 경우. start, end는 이제 같은 집합이 됨
+				result += e.weight; // 비용누적
+				if (++cnt == V - 1) // 연결 간선수가 정점수-1이면 다 연결한 것임
 					break; // 신장트리 완성
 			}
 		}

@@ -37,36 +37,37 @@ import java.util.StringTokenizer;
 ==> 14
  */
 
-// 다익스트라 알고리즘!
 public class DijkstraTest {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(in.readLine().trim());
 		int V = Integer.parseInt(st.nextToken()); // 정점의 개수
-		int start = 0; // 시작정점
-		int end = V - 1; // 끝정점
+		int start = 0; // 시작점
+		int end = V - 1; // 도착점
 		final int INFINITY = Integer.MAX_VALUE; //
 
 		int[][] matrix = new int[V][V]; // 인접행렬
-		int[] distance = new int[V]; // 출발지부터 자기자신까지의 최소비용거리 배열
-		boolean[] visited = new boolean[V]; // 지금까지 선택된 정점에 대한 true/false 배열
+		int[] distance = new int[V]; // 출발지부터 해당 정점까지의 최소 거리를 저장하고 있는 배열
+		boolean[] visited = new boolean[V]; // 모든 정점에 대한 방문여부 체크 배열
 
 		for (int i = 0; i < V; ++i) {
 			st = new StringTokenizer(in.readLine().trim(), " ");
 			for (int j = 0; j < V; ++j) {
-				matrix[i][j] = Integer.parseInt(st.nextToken());
+				matrix[i][j] = Integer.parseInt(st.nextToken()); // 정점 i->j로 가는 간선
 			}
 		} // 인접행렬 입력
 
 		Arrays.fill(distance, INFINITY); // 초기화
-		distance[start] = 0; // 정점 0에서 0까지의 거리
+		distance[start] = 0; // 정점 0에서 0까지의 거리 // 시작점
 
 		int min = 0, current = 0; // 현재 정점 -> 0
-		for (int i = 0; i < V; ++i) { // 모든 정점에 대한
+		for (int i = 0; i < V; ++i) { // 모든 정점 개수만큼 체크
 
 			min = INFINITY; // 처음에 최소값을 구하기 위해 무한대 값으로 초기화
-			for (int j = 0; j < V; ++j) { // 현재정점에서 모든 정점에 대한
+			for (int j = 0; j < V; ++j) {
+				// !visited[j] : 아직 방문 안했고
+				// distance[j] < min : 출발점 ~ j까지 오는 최소 거리 < min
 				if (!visited[j] && distance[j] < min) { // 이제까지 선택되지 않은 정점 && 출발지에서의 거리 배열인 distance 배열 값중 최소값 min보다
 														// 작으면,
 														// 여기서 인접정점이 아니면 무한대값이므로 그 조건도 포함되어있음
@@ -75,13 +76,14 @@ public class DijkstraTest {
 				}
 			}
 			visited[current] = true; // 현재정점 방문표시
-			if (current == end) { // 현재정점이 끝정점이면
-				break; // 끝
+			if (current == end) { // 현재정점이 끝정점이면 끝
+				break;
 			}
 
+			// 선택된 정점(current)를 `경유지`로 삼아 갈 수 있는 다른 방문하지 않은 정점들 거리 업데이트!
 			for (int c = 0; c < V; ++c) {
 				// 아직 선택되지 않았고 && 인접정점이어야하고 && 시작정점에서의 현재정점까지의 이전 거리 보다 최소값을 구해서 거쳐온 거리가 더 작으면
-				if (!visited[c] && matrix[current][c] != 0 && distance[c] > min + matrix[current][c]) { // 프림알고리즘이랑 비슷?
+				if (!visited[c] && matrix[current][c] != 0 && distance[c] > min + matrix[current][c]) {
 					distance[c] = min + matrix[current][c]; // 다시 갱신!
 				}
 			}
