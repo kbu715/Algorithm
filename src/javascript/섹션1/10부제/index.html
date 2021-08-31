@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10부제</title>
+</head>
+
+<body>
+  <script>
+    function solution(num, arr) {
+      let count = 0;
+
+      arr.forEach((v) => {
+        if ((v % 10) == num) {
+          count++;
+        }
+      });
+      return count;
+    }
+
+    let arr = [25, 23, 11, 47, 53, 17, 33];
+    let arr2 = [12, 20, 54, 30, 87, 91, 30];
+    console.log(solution(3, arr));
+    console.log(solution(0, arr2));
+  </script>
+</body>
+
+</html>

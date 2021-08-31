@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>삼각형 판별하기</title>
+</head>
+
+<body>
+  <script>
+    // 가장 긴 막대의 길이보다 나머지 두 막대의 길이의 합이 커야한다.
+    function solution(a, b, c) {
+      let max;
+      let answer;
+      let sum = a + b + c;
+      max = Math.max(a, b, c);
+
+      answer = (sum - max) > max ? "YES" : "NO";
+      return answer;
+    }
+
+    console.log(solution(6, 7, 11));
+    console.log(solution(13, 33, 17));
+
+  </script>
+</body>
+
+</html>
