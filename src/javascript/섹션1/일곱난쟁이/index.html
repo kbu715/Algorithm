@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>일곱난쟁이</title>
+</head>
+
+<body>
+  <script>
+    function solution(arr) {
+      let sum = arr.reduce((a, b) => a + b, 0);
+
+
+      outter: for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+          if ((arr[i] + arr[j]) == (sum - 100)) {
+            // console.log(i + " " + j);
+            arr.splice(i, 1);
+            arr.splice(j - 1, 1); // 앞에서 하나 삭제되서 인덱스도 -1해줘야함
+            break outter;
+          }
+        }
+      }
+      let str = "";
+      arr.forEach((v, i) => {
+        if (i == arr.length - 1) {
+          str += v;
+        } else {
+          str += v + " ";
+        }
+
+      })
+      console.log(str);
+    }
+
+    let arr = [20, 7, 23, 19, 10, 15, 25, 8, 13];
+    solution(arr);
+
+  </script>
+</body>
+
+</html>
