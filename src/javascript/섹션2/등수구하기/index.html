@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>등수 구하기</title>
+</head>
+
+<body>
+  <script>
+    function solution(arr) {
+      let original = [];
+      arr.forEach(v => {
+        original.push(v);
+      });
+      let sorted = arr.sort((a, b) => b - a);
+
+      console.log(original);
+      console.log(sorted);
+
+      for (let i = 0; i < original.length; i++) {
+
+        console.log(sorted.indexOf(original[i]) + 1)
+
+      }
+    }
+
+    let arr = [87, 89, 92, 100, 76];
+    solution(arr);
+  </script>
+</body>
+
+</html>

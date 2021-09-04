@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>보이는 학생</title>
+</head>
+
+<body>
+  <script>
+    function solution(arr) {
+      let count = 1;
+      let currentIndex = 0;
+      for (let i = 1; i < arr.length; i++) {
+        if (arr[currentIndex] < arr[i]) {
+          currentIndex = i;
+          count++;
+        }
+      }
+      console.log(count);
+    }
+
+    let students = [130, 135, 148, 140, 145, 150, 150, 153];
+    solution(students);
+  </script>
+</body>
+
+</html>

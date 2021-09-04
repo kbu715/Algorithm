@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>점수 계산</title>
+</head>
+
+<body>
+  <script>
+    // 1번문제가 맞는 경우 : 1점
+    // 답을 틀리다가 맞는 처음 문제는 : 1점
+    // 연속으로 맞는 경우 : 2번째 문제는 2점, 3번째 문제느 3점, ..., k번째 문제는 k점.
+    // 틀린 문제는 0점.
+    function solution(arr) {
+      let score = 0;
+      if (arr[0] == 1) { // 1번문제 맞는 경우
+        score++;
+      }
+      for (let i = 1; i < arr.length; i++) {
+
+        let count = 1;
+        while (arr[i] == 1) {
+          score += count;
+
+          i++;
+          count++;
+        }
+
+      }
+
+      console.log(score);
+
+
+    }
+
+    let arr = [1, 0, 1, 1, 1, 0, 0, 1, 1, 0];
+    solution(arr);
+  </script>
+</body>
+
+</html>
