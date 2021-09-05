@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>유효한 팰린드롬</title>
+</head>
+
+<body>
+  <script>
+    function checkPalindrome(str) {
+      let answer = true;
+      str = str.toLowerCase();
+      for (let i = 0; i < str.length / 2; i++) {
+        let a = str.charAt(i);
+        let b = str.charAt(str.length - 1 - i);
+
+        if (a !== b) {
+          answer = false;
+        }
+      }
+      return answer;
+    }
+    function solution(str) {
+      let copy = "";
+      for (let i = 0; i < str.length; i++) {
+        let code = str.charCodeAt(i);
+        if ((code >= 65 && code <= 90) || (code >= 97 && code <= 122)) { // 알파벳
+          copy += str.charAt(i);
+        }
+      }
+      let flag = checkPalindrome(copy);
+
+      if (flag) {
+        console.log("YES");
+      } else {
+        console.log("NO");
+      }
+    }
+
+    let str = "found7, time: study; Yduts; emit, 7Dnuof";
+    solution(str);
+  </script>
+</body>
+
+</html>

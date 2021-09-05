@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>숫자만 추출</title>
+</head>
+
+<body>
+  <script>
+    function solution(str) {
+      str = str.toUpperCase();
+      let numStr = "";
+      for (let i = 0; i < str.length; i++) {
+        if (str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 90) {
+          continue;
+        } else {
+          numStr += str.charAt(i);
+        }
+      }
+      console.log(Number(numStr));
+    }
+    let str = "g0en2T0s8eSoft";
+    solution(str);
+  </script>
+</body>
+
+</html>

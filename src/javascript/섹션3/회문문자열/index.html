@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회문 문자열</title>
+</head>
+
+<body>
+  <script>
+    function solution(str) {
+      let answer = "YES";
+      str = str.toLowerCase();
+      console.log(str);
+      for (let i = 0; i < str.length / 2; i++) {
+        let a = str.charAt(i);
+        let b = str.charAt(str.length - 1 - i);
+
+        if (a !== b) {
+          answer = "NO";
+        }
+      }
+      console.log(answer);
+    }
+
+    let str = "zzdaddsfsGGGGGdfeadzz";
+    solution(str);
+  </script>
+</body>
+
+</html>

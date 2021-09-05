@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>가장 짧은 문자 거리</title>
+</head>
+
+<body>
+  <script>
+    function solution(str, word) {
+      let d;
+      let rightDist;
+      let leftDist;
+      let currentValue;
+      let minDist;
+      let answer = "";
+      for (let i = 0; i < str.length; i++) {
+        d = 1;
+        rightDist = 1;
+        leftDist = 1;
+        currentValue = str.charAt(i);
+        if (currentValue === word) {
+          answer += "0 ";
+        } else {
+          while (i + d < str.length && str.charAt(i + d) !== word) { // 오른쪽검사
+            d++;
+            rightDist++;
+          }
+          if (i + d >= str.length) { // 범위를 벗어나면
+            rightDist = Number.MAX_SAFE_INTEGER;
+          }
+          d = 1;
+          while (i - d >= 0 && str.charAt(i - d) !== word) { // 왼쪽검사
+            d++;
+            leftDist++;
+          }
+          if (i - d < 0) { // 범위를 벗어나면
+            leftDist = Number.MAX_SAFE_INTEGER;
+          }
+          minDist = Math.min(leftDist, rightDist);
+          answer += `${minDist} `;
+        }
+      }
+      console.log(answer);
+    }
+
+    let str = "teachermode";
+    let word = 'e';
+    solution(str, word);
+  </script>
+</body>
+
+</html>
