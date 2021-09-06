@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>뒤집은소수</title>
+</head>
+
+<body>
+  <script>
+    function checkPrime(num) {
+      let flag = true;
+      if (num == 1) {
+        return false;
+      }
+      for (let i = 2; i < num; i++) {
+        if (num % i == 0) {
+          flag = false;
+          break;
+        }
+      }
+      return flag;
+    }
+
+    function reverse(num) {
+      let numStr = String(num);
+      let reversedArray = numStr.split('').reverse();
+      let temp = [];
+      for (let i = 0; i < reversedArray.length; i++) {
+        if (reversedArray[i] == '0')
+          continue;
+        else
+          temp.push(reversedArray[i]);
+      }
+      return temp.join('');
+
+    }
+
+    function solution(arr) {
+      let answer = "";
+      for (let i = 0; i < arr.length; i++) {
+        let reversedNumStr = reverse(arr[i]);
+        if (checkPrime(Number(reversedNumStr))) {
+          answer += reversedNumStr + " ";
+        }
+      }
+      console.log(answer);
+    }
+
+
+    let arr = [32, 55, 62, 20, 250, 370, 200, 30, 100];
+
+    solution(arr);
+
+  </script>
+</body>
+
+</html>
