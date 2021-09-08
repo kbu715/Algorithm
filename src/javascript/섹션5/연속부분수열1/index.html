@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>연속 부분수열 1</title>
+</head>
+
+<body>
+  <script>
+    function solution(n, m, arr) {
+      let count = 0;
+      for (let i = 0; i < n; i++) {
+        let sum = 0;
+        let j = i;
+        while (sum <= m) {
+          if (sum == m) {
+            // 합이 6이 되는 순간
+            count++;
+            break;
+          }
+          sum += arr[j];
+          j++;
+        }
+      }
+      console.log(count);
+    }
+
+    let N = 8;
+    let M = 6;
+    let arr = [1, 2, 1, 3, 1, 1, 1, 2];
+    solution(N, M, arr);
+  </script>
+</body>
+
+</html>
