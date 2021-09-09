@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>최대매출</title>
+</head>
+
+<body>
+  <script>
+    function solution(n, k, arr) {
+      let answer = 0;
+
+      for (let i = 0; i < n; i++) {
+        let sum = 0;
+        for (let j = 0; j < k; j++) {
+          if (i + j >= n) {
+            break;
+          }
+          sum += arr[i + j];
+        }
+        answer = Math.max(answer, sum);
+      }
+      console.log(answer);
+    }
+
+    let arr = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+    let n = 10;
+    let k = 3;
+    solution(n, k, arr);
+  </script>
+</body>
+
+</html>

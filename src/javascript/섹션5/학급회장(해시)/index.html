@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>학급 회장 (해쉬)</title>
+</head>
+
+<body>
+  <script>
+    function solution(str, n) {
+
+      let flag = [0, 0, 0, 0, 0];
+
+      for (const idx in str) {
+        flag[str.charCodeAt(idx) - 65]++;
+      }
+      let max = 0;
+      let maxIdx = 0;
+      for (let i = 0; i < flag.length; i++) {
+        if (max < flag[i]) {
+          max = flag[i];
+          maxIdx = i;
+        }
+      }
+      console.log(String.fromCharCode(65 + maxIdx));
+    }
+
+    let str = "BACBACCACCBDEDE";
+    let n = 15;
+    solution(str, n);
+  </script>
+</body>
+
+</html>
