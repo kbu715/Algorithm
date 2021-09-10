@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>모든 아나그램 찾기(해쉬, 투포인터, 슬라이딩 윈도우)</title>
+</head>
+
+<body>
+  <script>
+    function solution(S, T) {
+      let count = 0;
+      let sumT = 0;
+      for (let i = 0; i < T.length; i++) {
+        sumT += T.charCodeAt(i);
+      }
+      for (let i = 0; i < S.length; i++) {
+        let sumS = 0;
+        for (let j = i; j < i + T.length; j++) {
+          sumS += S.charCodeAt(j);
+        }
+        if (sumS == sumT) {
+          count++;
+        }
+      }
+      console.log(count);
+    }
+
+    let S = "bacaAacba";
+    let T = "abc";
+    solution(S, T);
+  </script>
+</body>
+
+</html>
