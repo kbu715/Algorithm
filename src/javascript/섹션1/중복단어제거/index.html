@@ -12,15 +12,9 @@
   <script>
     function solution(arr) {
       let str = "";
-      for (let i = 0; i < arr.length; i++) {
-
-        if (i == arr.indexOf(arr[i])) {
-          str += (arr[i] + " ");
-        }
-      }
-
+      arr = arr.filter((v, i) => arr.indexOf(v) == i)
+      arr.forEach(v => str += v + " ");
       console.log(str);
-
     }
 
     let arr = ['good', 'time', 'good', 'time', 'student'];
