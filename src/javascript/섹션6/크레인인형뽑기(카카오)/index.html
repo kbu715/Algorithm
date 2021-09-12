@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>크레인인형뽑기</title>
+</head>
+
+<body>
+  <script>
+    function solution(board, moves) {
+      let answer = 0;
+      let stack = []; // 바구니
+
+      let stackArray = []; //board를 스택의 관점으로 재배열
+
+      // 입력
+      for (let i = 0; i < board.length; i++) {
+        let temp = new Array();
+        for (let j = board.length - 1; j >= 0; j--) {
+          if (board[j][i] !== 0) {
+            temp.push(board[j][i]);
+          }
+        }
+        stackArray.push(temp);
+      }
+
+      // console.log(stackArray);
+
+      moves.forEach(m => {
+        if (stackArray[m - 1].length > 0) {
+          stack.push(stackArray[m - 1].pop());
+          if (stack[stack.length - 1] === stack[stack.length - 2]) {
+            answer += 2;
+            stack.pop();
+            stack.pop();
+          }
+        }
+      })
+      console.log(answer);
+
+    }
+    let board = [[0, 0, 0, 0, 0], [0, 0, 1, 0, 3], [0, 2, 5, 0, 1], [4, 2, 4, 4, 2], [3, 5, 1, 3, 1]];
+    let moves = [1, 5, 3, 5, 1, 2, 1, 4];
+    solution(board, moves);
+  </script>
+</body>
+
+</html>

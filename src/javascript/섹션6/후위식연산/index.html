@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>후위식 연산 postfix</title>
+</head>
+
+<body>
+  <script>
+    function solution(s) {
+      let answer;
+      stack = [];
+      for (const x of s) {
+        if (!isNaN(x)) { // 숫자면
+          stack.push(Number(x));
+        }
+        else {
+          let right = stack.pop();
+          let left = stack.pop();
+          if (x === "+") stack.push(left + right);
+          else if (x === "-") stack.push(left - right);
+          else if (x === "*") stack.push(left * right);
+          else if (x === "/") stack.push(left / right);
+        }
+      }
+      answer = stack.pop();
+      console.log(answer);
+    }
+
+    let str = "352+*9-";
+    solution(str);
+  </script>
+</body>
+
+</html>
