@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>쇠막대기 자르기</title>
+</head>
+<!-- 
+1. '(' 만나면 막대기++
+2. ')' 만나면 막대기 끝 => 카운트++ and 막대기 수--
+3. '*' 레이저 만나면 막대기 수 만큼 카운트 증가 (예를들어 막대기가 3개면 +3) 
+-->
+
+<body>
+  <script>
+    function solution(s) {
+      let answer = 0; // 카운트
+      let numOfBars = 0; // 막대기 수
+      s = s.replaceAll('()', '*'); // 레이저 치환
+
+      for (const x of s) {
+        switch (x) {
+          case '(':
+            numOfBars++;
+            break;
+          case ')':
+            answer += 1; // 막대기 하나 끝나면 +1
+            numOfBars--;
+            break;
+          case '*':
+            answer += numOfBars; // 레이저 만나면 막대기 수 만큼 증가
+            break;
+        }
+      }
+      console.log(answer);
+    }
+    let str = "(((()(()()))(())()))(()())";
+    solution(str);
+  </script>
+</body>
+
+</html>

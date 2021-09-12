@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>공주 구하기</title>
+</head>
+<!-- 큐로 풀면 쉽다 -->
+
+<body>
+  <script>
+    function solution(n, k) {
+      // 1. queue만들기 첫번째 방법
+      // let queue = [];
+      // for (let i = 1; i <= n; i++) {
+      //   queue.push(i);
+      // }
+
+      // 2. queue 만들기 두번째 방법
+      let queue = Array.from({ length: n }, (v, i) => i + 1);
+
+
+      while (queue.length !== 1) {
+        for (let i = 1; i <= k; i++) {
+          if (i === k) {
+            queue.shift();
+          } else {
+            queue.push(queue.shift());
+          }
+        }
+      }
+      console.log(queue.shift());
+    }
+
+    let N = 8;
+    let K = 3;
+    solution(N, K);
+  </script>
+</body>
+
+</html>
