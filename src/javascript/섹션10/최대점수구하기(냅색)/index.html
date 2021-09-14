@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>최대 점수 구하기 (냅색 알고리즘)</title>
+</head>
+
+<body>
+  <script>
+    function solution(N, M, arr) {
+
+      // M: 제한시간
+      // N: 문제 수
+      // arr: 문제의 점수(가치)와 소요시간(무게)
+
+      let scores = Array.from({ length: N + 1 }).fill(0);
+      let times = Array.from({ length: N + 1 }).fill(0);
+
+      for (let i = 0; i < arr.length; i++) {
+        scores[i + 1] = arr[i][0];
+        times[i + 1] = arr[i][1];
+      }
+      let d = Array.from({ length: N + 1 }, () => Array(M + 1));
+
+      console.log(scores);
+      console.log(times);
+
+      console.log(d);
+
+      for (let i = 1; i <= N; i++) {
+        for (let m = 1; m <= M; m++) {
+          if (times[i] < M) { // 해당 물건을 가방에 넣을 수 있다.
+            d[i][m] = Math.max(d[i - 1][m], scores[i] + d[i - 1][m - times[i]]);
+          } else {
+            d[i][m] = d[i - 1][m];
+          }
+        }
+      }
+      console.log(d[N][M]);
+
+
+    }
+
+    let N = 5; // 문제 수
+    let M = 20; // 제한시간
+    let ST = [[10, 5], [25, 12], [15, 8], [6, 3], [7, 4]]; // score / time : 점수 / 걸리는 시간
+    solution(N, M, ST);
+  </script>
+</body>
+
+</html>
