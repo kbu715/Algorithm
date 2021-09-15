@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>부분집합 구하기 (DFS)</title>
+</head>
+
+<body>
+  <script>
+    function solution(n) {
+      let answer = "";
+      let flag = Array.from({ length: n }, () => false);
+      let input = Array.from({ length: n }, (v, i) => i + 1);
+
+      DFS(0);
+
+      function DFS(cnt) {
+        if (cnt === n) {
+          for (let i = 0; i < n; i++) {
+            if (flag[i]) {
+              answer += input[i] + " ";
+            }
+          }
+          answer && console.log(answer);
+          answer = "";
+          return;
+        }
+        flag[cnt] = true;
+        DFS(cnt + 1);
+        flag[cnt] = false;
+        DFS(cnt + 1);
+      }
+
+    }
+    solution(3);
+  </script>
+</body>
+
+</html>
