@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>바둑이 승차(DFS)</title>
+</head>
+
+<body>
+  <script>
+    function solution(c, n, arr) {
+
+      let max = 0;
+      DFS(0, 0);
+      return max;
+      function DFS(cnt, sum) {
+        if (cnt === n) {
+          if (sum <= c && sum > max) {
+            max = sum;
+          }
+          return;
+        } else {
+          DFS(cnt + 1, sum + arr[cnt]);
+          DFS(cnt + 1, sum);
+        }
+      }
+    }
+
+    let C = 259;
+    let N = 5;
+    let arr = [81, 58, 42, 33, 61];
+    console.log(solution(C, N, arr));
+  </script>
+</body>
+
+</html>

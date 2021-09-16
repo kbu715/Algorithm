@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>최대 점수 구하기</title>
+</head>
+
+<body>
+  <script>
+    function solution(n, m, s, t) {
+      let maxScore = 0;
+      DFS(0, 0, 0);
+
+      function DFS(cnt, sumS, sumT) {
+        if (cnt == n) {
+          if (sumT <= m && maxScore < sumS) {
+            maxScore = sumS;
+          }
+          return;
+        } else {
+          DFS(cnt + 1, sumS + s[cnt], sumT + t[cnt]);
+          DFS(cnt + 1, sumS, sumT);
+        }
+      }
+      console.log(maxScore);
+    }
+
+    let N = 5;
+    let M = 20;
+    let score = [10, 25, 15, 6, 7];
+    let time = [5, 12, 8, 3, 4];
+    solution(N, M, score, time);
+  </script>
+</body>
+
+</html>

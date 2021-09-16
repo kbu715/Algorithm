@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>순열구하기</title>
+</head>
+
+<body>
+  <script>
+    function solution(n, k, arr) {
+
+      let flag = Array.from({ length: n }, () => false);
+      let temp = Array.from({ length: n }, () => 0);
+      let count = 0;
+
+      perm(0);
+      console.log(count);
+
+      function perm(cnt) {
+        if (cnt == k) {
+          let answer = "";
+          for (let i = 0; i < temp.length; i++) {
+            if (temp[i] == 0) {
+              continue;
+            }
+            answer += temp[i] + " ";
+          }
+          console.log(answer);
+          count++;
+          return;
+        }
+        for (let i = 0; i < n; i++) {
+          if (flag[i]) {
+            continue;
+          }
+          flag[i] = true;
+          temp[cnt] = arr[i];
+          perm(cnt + 1);
+          flag[i] = false;
+        }
+      }
+
+    }
+
+    let N = 3;
+    let K = 2;
+    let arr = [3, 6, 9];
+    solution(N, K, arr);
+  </script>
+</body>
+
+</html>
