@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>메모이제이션 - 조합의 경우수</title>
+</head>
+
+<body>
+  <script>
+    function solution(n, r) {
+      let answer;
+      let d = Array.from(Array(35), () => Array(35).fill(0)); // 3행5열
+      console.log(d);
+      function comb(n, r) {
+        if (d[n][r] != 0) return d[n][r]; // 메모이제이션
+        if (n === r || r === 0) {
+          return 1;
+        } else {
+          return d[n][r] = comb(n - 1, r - 1) + comb(n - 1, r);
+        }
+      }
+      answer = comb(n, r);
+      return answer;
+    }
+
+    let N = 33;
+    let R = 19;
+
+    console.log(solution(N, R));
+  </script>
+</body>
+
+</html>

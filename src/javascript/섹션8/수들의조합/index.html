@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>수들의 조합</title>
+</head>
+
+<body>
+  <script>
+    function solution(n, k, m) {
+
+      let selected = Array.from(Array(k), () => 0);
+      let count = 0;
+      comb(0, 0, 0);
+      console.log(count);
+
+      function comb(cnt, start, sum) {
+        if (cnt === k) {
+          if (sum % m == 0)
+            count++;
+          return;
+        } else {
+          for (let i = start; i < n; i++) {
+            selected[cnt] = i + 1;
+            comb(cnt + 1, i + 1, sum + i + 1);
+          }
+        }
+      }
+    }
+
+    let N = 5;
+    let K = 3;
+    let M = 6;
+
+    solution(N, K, M);
+  </script>
+</body>
+
+</html>
