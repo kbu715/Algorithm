@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>송아지 찾기 (BFS)</title>
+</head>
+
+<body>
+  <script>
+
+    // 1. 몇번 점프했는지 담은 배열로 푸는 방법
+
+    // function solution(s, e) { // s: 현수 위치 , e: 송아지 위치
+    //   let answer = 0;
+    //   let visited = Array.from({ length: 10001 }, () => 0);
+    //   let dis = Array.from({ length: 10001 }, () => 0); // 현수 위치에서 몇번 점프했는지 나타내는 배열
+    //   let queue = [];
+
+    //   visited[s] = 1;
+    //   queue.push(s);
+    //   dis[s] = 0;
+
+    //   while (queue.length) {
+    //     let v = queue.shift();
+    //     for (let nv of [v - 1, v + 1, v + 5]) {
+    //       if (nv === e) return dis[v] + 1;
+    //       if (nv > 0 && nv <= 10000 && visited[nv] !== 1) {
+    //         visited[nv] = 1;
+    //         queue.push(nv);
+    //         dis[nv] = dis[v] + 1;
+    //       }
+    //     }
+    //   }
+
+    //   return answer;
+    // }
+
+    // 2. level 개념으로 풀어보기
+
+    function solution(s, e) {
+      let answer = 0;
+      let ch = Array.from({ length: 10001 }, () => 0);
+      let queue = [];
+      queue.push(s);
+      ch[s] = 1;
+      let L = 0;
+      while (queue.length) {
+        let len = queue.length;
+        for (let i = 0; i < len; i++) {
+          let x = queue.shift();
+          for (let nx of [x - 1, x + 1, x + 5]) {
+            if (nx === e) return L + 1;
+            if (nx > 0 && nx <= 10000 && ch[nx] === 0) {
+              ch[nx] = 1;
+              queue.push(nx);
+            }
+          }
+        }
+        L++;
+      }
+      return answer;
+    }
+
+    console.log(solution(8, 3));
+  </script>
+</body>
+
+</html>
