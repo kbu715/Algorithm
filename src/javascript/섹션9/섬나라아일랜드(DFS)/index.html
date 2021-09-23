@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>섬나라 아일랜드(DFS)</title>
+</head>
+
+<body>
+  <script>
+    function solution(arr) {
+
+      let answer = 0;
+      let dx = [-1, -1, 0, 1, 1, 1, 0, -1];
+      let dy = [0, 1, 1, 1, 0, -1, -1, -1];
+      let visited = arr.slice();
+
+      let cnt = 0;
+      for (let i = 0; i < 7; i++) {
+        for (let j = 0; j < 7; j++) {
+          if (visited[i][j] === 1) {
+            visited[i][j] = -1; // 섬 표시를 -1로바꿈(미방문인 섬) // 보기 편하게
+          }
+        }
+      }
+
+      for (let i = 0; i < 7; i++) {
+        for (let j = 0; j < 7; j++) {
+          if (visited[i][j] === -1) {
+            cnt++;
+            DFS(i, j);
+          }
+        }
+      }
+      function DFS(x, y) {
+
+        if (visited[x][y] === 0) {
+          return;
+        } else {
+          visited[x][y] = cnt;
+          for (let i = 0; i < 8; i++) {
+            let nx = x + dx[i];
+            let ny = y + dy[i];
+
+            if (nx >= 0 && ny >= 0 && nx < 7 && ny < 7 && visited[nx][ny] === -1) {
+              visited[nx][ny] = cnt;
+              DFS(nx, ny);
+            }
+          }
+        }
+      }
+
+      answer = cnt;
+
+      return answer;
+
+    }
+    let arr = [[1, 1, 0, 0, 0, 1, 0],
+    [0, 1, 1, 0, 1, 1, 0],
+    [0, 1, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 0, 1, 1],
+    [1, 1, 0, 1, 1, 0, 0],
+    [1, 0, 0, 0, 1, 0, 0],
+    [1, 0, 1, 0, 1, 0, 0]];
+
+    console.log(solution(arr));
+  </script>
+</body>
+
+</html>
