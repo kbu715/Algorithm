@@ -8,7 +8,7 @@
   
   [소스 폴더 보기](./src/baekjoon) 
    
-- **프로그래머스** : [프로그래머스](https://programmers.co.kr/) 문제를 해결한 소스코드 입니다.
+- **프로그래머스** : [프로그래머스](https://programmers.co.kr/learn/challenges?tab=all_challenges) 문제를 해결한 소스코드 입니다.
   
   [소스 폴더 보기](./src/programmers)
   
