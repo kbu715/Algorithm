@@ -12,34 +12,58 @@
   <script>
     function solution(arr) {
 
-      // 상 하 좌 우
+      // // 상 하 좌 우
+      // let dx = [-1, 1, 0, 0];
+      // let dy = [0, 0, -1, 1];
+
+      // let count = 0;
+      // for (let i = 1; i < arr.length - 1; i++) {
+      //   for (let j = 1; j < arr[i].length - 1; j++) {
+      //     let max = 0;
+      //     for (let d = 0; d < 4; d++) {
+      //       let nx = i + dx[d]; // 새 행 인덱스
+      //       let ny = j + dy[d]; // 새 열 인덱스
+
+      //       if (arr[nx][ny] > max) {
+      //         max = arr[nx][ny];
+      //       }
+      //     }
+      //     if (max < arr[i][j]) {
+      //       count++;
+      //     }
+      //   }
+      // }
+
+      // console.log(count);
+
       let dx = [-1, 1, 0, 0];
       let dy = [0, 0, -1, 1];
+      let answer = 0;
 
-      let count = 0;
       for (let i = 1; i < arr.length - 1; i++) {
-        for (let j = 1; j < arr[i].length - 1; j++) {
-          let max = 0;
-          for (let d = 0; d < 4; d++) {
-            let nx = i + dx[d]; // 새 행 인덱스
-            let ny = j + dy[d]; // 새 열 인덱스
+        for (let j = 1; j < arr.length - 1; j++) {
 
-            if (arr[nx][ny] > max) {
-              max = arr[nx][ny];
-            }
+          let flag = true;
+
+          for (let d = 0; d < 4; d++) {
+
+            let nx = i + dx[d];
+            let ny = j + dy[d];
+
+            if (arr[nx][ny] >= arr[i][j]) flag = false;
+
           }
-          if (max < arr[i][j]) {
-            count++;
-          }
+
+          if (flag) answer++;
         }
       }
 
-      console.log(count);
+      return answer;
 
     }
 
     let arr = [[0, 0, 0, 0, 0, 0, 0], [0, 5, 3, 7, 2, 3, 0], [0, 3, 7, 1, 6, 1, 0], [0, 7, 2, 5, 3, 4, 0], [0, 4, 3, 6, 4, 1, 0], [0, 8, 7, 3, 5, 2, 0], [0, 0, 0, 0, 0, 0, 0]];
-    solution(arr);
+    console.log(solution(arr)); // 10
   </script>
 </body>
 

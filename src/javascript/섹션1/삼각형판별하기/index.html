@@ -12,8 +12,7 @@
   <script>
     // 가장 긴 막대의 길이보다 나머지 두 막대의 길이의 합이 커야한다.
     function solution(a, b, c) {
-      let max;
-      let answer;
+      let max, answer;
       let sum = a + b + c;
       max = Math.max(a, b, c);
 
@@ -21,8 +20,8 @@
       return answer;
     }
 
-    console.log(solution(6, 7, 11));
-    console.log(solution(13, 33, 17));
+    console.log(solution(6, 7, 11)); // YES
+    console.log(solution(13, 33, 17)); // NO
 
   </script>
 </body>

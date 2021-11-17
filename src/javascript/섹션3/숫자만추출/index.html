@@ -11,16 +11,32 @@
 <body>
   <script>
     function solution(str) {
-      str = str.toUpperCase();
-      let numStr = "";
-      for (let i = 0; i < str.length; i++) {
-        if (str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 90) {
-          continue;
-        } else {
-          numStr += str.charAt(i);
-        }
+      // str = str.toUpperCase();
+      // let numStr = "";
+      // for (let i = 0; i < str.length; i++) {
+      //   if (str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 90) {
+      //     continue;
+      //   } else {
+      //     numStr += str.charAt(i);
+      //   }
+      // }
+      // console.log(Number(numStr));
+
+
+
+
+      let answer = 0;
+      for (const x of str) {
+        if (!isNaN(x)) answer = answer * 10 + Number(x);
       }
-      console.log(Number(numStr));
+
+      console.log(answer);
+
+
+
+
+      // str = str.toLowerCase().replace(/[a-z]/g, '');
+      // !isNaN(str) && console.log(parseInt(str));
     }
     let str = "g0en2T0s8eSoft";
     solution(str);

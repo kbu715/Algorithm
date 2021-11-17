@@ -11,40 +11,84 @@
 <body>
   <script>
     function solution(str, word) {
-      let d;
-      let rightDist;
-      let leftDist;
-      let currentValue;
-      let minDist;
-      let answer = "";
-      for (let i = 0; i < str.length; i++) {
-        d = 1;
-        rightDist = 1;
-        leftDist = 1;
-        currentValue = str.charAt(i);
-        if (currentValue === word) {
-          answer += "0 ";
+      // let d;
+      // let rightDist;
+      // let leftDist;
+      // let currentValue;
+      // let minDist;
+      // let answer = "";
+      // for (let i = 0; i < str.length; i++) {
+      //   d = 1;
+      //   rightDist = 1;
+      //   leftDist = 1;
+      //   currentValue = str.charAt(i);
+      //   if (currentValue === word) {
+      //     answer += "0 ";
+      //   } else {
+      //     while (i + d < str.length && str.charAt(i + d) !== word) { // 오른쪽검사
+      //       d++;
+      //       rightDist++;
+      //     }
+      //     if (i + d >= str.length) { // 범위를 벗어나면
+      //       rightDist = Number.MAX_SAFE_INTEGER;
+      //     }
+      //     d = 1;
+      //     while (i - d >= 0 && str.charAt(i - d) !== word) { // 왼쪽검사
+      //       d++;
+      //       leftDist++;
+      //     }
+      //     if (i - d < 0) { // 범위를 벗어나면
+      //       leftDist = Number.MAX_SAFE_INTEGER;
+      //     }
+      //     minDist = Math.min(leftDist, rightDist);
+      //     answer += `${minDist} `;
+      //   }
+      // }
+      // console.log(answer);
+
+
+
+
+
+
+
+
+
+      let len = str.length;
+      let dist = 1000;
+      let answer = Array.from({ length: len }, () => dist);
+
+      // 왼쪽에 있는 word값 까지의 최소거리를 계산하는 loop - 1번 루프
+
+      for (let i = 0; i < len; i++) {
+        if (str[i] == word) {
+          dist = 0;
+          answer[i] = dist;
         } else {
-          while (i + d < str.length && str.charAt(i + d) !== word) { // 오른쪽검사
-            d++;
-            rightDist++;
-          }
-          if (i + d >= str.length) { // 범위를 벗어나면
-            rightDist = Number.MAX_SAFE_INTEGER;
-          }
-          d = 1;
-          while (i - d >= 0 && str.charAt(i - d) !== word) { // 왼쪽검사
-            d++;
-            leftDist++;
-          }
-          if (i - d < 0) { // 범위를 벗어나면
-            leftDist = Number.MAX_SAFE_INTEGER;
-          }
-          minDist = Math.min(leftDist, rightDist);
-          answer += `${minDist} `;
+          answer[i] = ++dist;
         }
       }
-      console.log(answer);
+
+
+      // 오른쪽에 있는 word값 까지의 최소거리. 단, 기존의 answer 배열과 비교하여 최소값으로 update
+
+      dist = 1000;
+
+      for (let i = len - 1; i >= 0; i--) {
+        if (str[i] == word) {
+          dist = 0;
+          // 굳이 0으로 다시 update 할 필요 없다.
+        } else {
+          // 1번 루프에서 정해진 값과 비교해서 최소값으로 update 해주는 곳
+          if (dist < answer[i]) {
+            answer[i] = ++dist;
+          }
+        }
+      }
+
+      console.log(answer.toString());
+
+
     }
 
     let str = "teachermode";

@@ -11,20 +11,27 @@
 <body>
   <script>
     function solution(s) {
-      let len = s.length;
+      // let len = s.length;
+      // let answer;
+      // if (len % 2 == 0) {
+      //   answer = s.substr(len / 2 - 1, 2); // substr(start [, length])
+      // } else {
+      //   answer = s.substr(len / 2, 1);
+      // }
+
+
+
       let answer;
-      if (len % 2 == 0) {
-        answer = s.substr(len / 2 - 1, 2);
-      } else {
-        answer = s.substr(len / 2, 1);
-      }
+      let mid = Math.floor(s.length / 2)
+      if (s.length % 2 == 1) answer = s.slice(mid, mid + 1);
+      else answer = s.slice(mid - 1, mid + 1);
 
       console.log(answer);
 
     }
 
-    // let str = "paul";
-    let str = "study";
+    let str = "paul";
+    // let str = "study";
     solution(str);
   </script>
 </body>

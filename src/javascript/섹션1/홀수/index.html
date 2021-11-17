@@ -12,15 +12,22 @@
   <script>
     function solution(arr) {
       let sum = 0;
-      let odd = [];
-      let min;
-      arr.forEach((v, i) => {
-        if (v % 2 == 1) {
-          sum += v;
-          odd.push(v);
+      // let odd = [];
+      let min = Number.MAX_SAFE_INTEGER;
+      // arr.forEach((v, i) => {
+      //   if (v % 2 == 1) {
+      //     sum += v;
+      //     odd.push(v);
+      //   }
+      // })
+
+      for (const x of arr) {
+        if (x % 2 === 1) {
+          sum += x;
+          if (x < min) min = x;
         }
-      })
-      min = Math.min(...odd);
+      }
+      // min = Math.min(...odd);
 
       console.log(sum);
       console.log(min);

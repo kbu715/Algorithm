@@ -10,34 +10,42 @@
 
 <body>
   <script>
-    function checkPalindrome(str) {
-      let answer = true;
-      str = str.toLowerCase();
-      for (let i = 0; i < str.length / 2; i++) {
-        let a = str.charAt(i);
-        let b = str.charAt(str.length - 1 - i);
+    // function checkPalindrome(str) {
+    //   let answer = true;
+    //   str = str.toLowerCase();
+    //   for (let i = 0; i < str.length / 2; i++) {
+    //     let a = str.charAt(i);
+    //     let b = str.charAt(str.length - 1 - i);
 
-        if (a !== b) {
-          answer = false;
-        }
-      }
-      return answer;
-    }
+    //     if (a !== b) {
+    //       answer = false;
+    //     }
+    //   }
+    //   return answer;
+    // }
     function solution(str) {
-      let copy = "";
-      for (let i = 0; i < str.length; i++) {
-        let code = str.charCodeAt(i);
-        if ((code >= 65 && code <= 90) || (code >= 97 && code <= 122)) { // 알파벳
-          copy += str.charAt(i);
-        }
-      }
-      let flag = checkPalindrome(copy);
+      // let copy = "";
+      // for (let i = 0; i < str.length; i++) {
+      //   let code = str.charCodeAt(i);
+      //   if ((code >= 65 && code <= 90) || (code >= 97 && code <= 122)) { // 알파벳
+      //     copy += str.charAt(i);
+      //   }
+      // }
+      // let flag = checkPalindrome(copy);
 
-      if (flag) {
-        console.log("YES");
-      } else {
-        console.log("NO");
-      }
+      // if (flag) {
+      //   console.log("YES");
+      // } else {
+      //   console.log("NO");
+      // }
+
+      let answer = "YES";
+      str = str.toLowerCase().replace(/[^a-z]/g, ''); // 알파벳 제외 regex
+
+      if (str.split('').reverse().join('') !== str) answer = "NO";
+
+      console.log(answer);
+
     }
 
     let str = "found7, time: study; Yduts; emit, 7Dnuof";

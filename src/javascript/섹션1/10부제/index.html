@@ -11,20 +11,21 @@
 <body>
   <script>
     function solution(num, arr) {
-      let count = 0;
+      // let count = 0;
 
-      arr.forEach((v) => {
-        if ((v % 10) == num) {
-          count++;
-        }
-      });
-      return count;
+      // arr.forEach((v) => {
+      //   if ((v % 10) == num) {
+      //     count++;
+      //   }
+      // });
+      // return count;
+      return arr.filter((v) => v % 10 == num).length;
     }
 
     let arr = [25, 23, 11, 47, 53, 17, 33];
     let arr2 = [12, 20, 54, 30, 87, 91, 30];
-    console.log(solution(3, arr));
-    console.log(solution(0, arr2));
+    console.log(solution(3, arr)); // 3
+    console.log(solution(0, arr2)); // 3
   </script>
 </body>
 

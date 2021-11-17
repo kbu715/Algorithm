@@ -20,19 +20,33 @@
 <body>
   <script>
     function solution(arr) {
-      let count = 1;
-      let currentIndex = 0;
-      for (let i = 1; i < arr.length; i++) { // 시간복잡도 O(N)
-        if (arr[currentIndex] < arr[i]) {
-          currentIndex = i;
+      // let count = 1;
+      // let currentIndex = 0;
+      // for (let i = 1; i < arr.length; i++) { // 시간복잡도 O(N)
+      //   if (arr[currentIndex] < arr[i]) {
+      //     currentIndex = i;
+      //     count++;
+      //   }
+      // }
+      // console.log(count);
+
+
+      let count = 0;
+      let max = Number.MIN_SAFE_INTEGER;
+
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > max) {
+          max = arr[i];
           count++;
         }
       }
-      console.log(count);
+
+      return count;
+
     }
 
     let students = [130, 135, 148, 140, 145, 150, 150, 153];
-    solution(students);
+    console.log(solution(students)); // 5
   </script>
 </body>
 

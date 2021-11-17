@@ -15,29 +15,64 @@
     // 연속으로 맞는 경우 : 2번째 문제는 2점, 3번째 문제느 3점, ..., k번째 문제는 k점.
     // 틀린 문제는 0점.
     function solution(arr) {
-      let answer = 0;
-      if (arr[0] == 1) { // 1번문제 맞는 경우
-        answer++;
-      }
-      for (let i = 1; i < arr.length; i++) {
+      // let answer = 0;
+      // if (arr[0] == 1) { // 1번문제 맞는 경우
+      //   answer++;
+      // }
+      // for (let i = 1; i < arr.length; i++) {
 
-        let count = 1;
-        while (arr[i] == 1) {
-          answer += count;
+      //   let count = 1;
+      //   while (arr[i] == 1) {
+      //     answer += count;
 
-          i++;
-          count++;
+      //     i++;
+      //     count++;
+      //   }
+
+      // }
+
+      // console.log(answer);
+
+
+
+
+      // let totalScore = 0;
+
+
+      // 1번 문제
+      // if (arr[0] === 1) {
+      //   totalScore++;
+      // }
+
+      // for (let i = 1; i < arr.length; i++) {
+
+      //   let count = 0;
+      //   while (arr[i] === 1) {
+      //     count++;
+      //     i++;
+      //     totalScore += count;
+      //   }
+
+
+      // }
+
+      // return totalScore;
+
+
+      let answer = 0, cnt = 0;
+      for (const x of arr) {
+        if (x === 1) {
+          cnt++;
+          answer += cnt;
         }
-
+        else cnt = 0;
       }
 
-      console.log(answer);
-
-
+      return answer;
     }
 
     let arr = [1, 0, 1, 1, 1, 0, 0, 1, 1, 0];
-    solution(arr);
+    console.log(solution(arr));
   </script>
 </body>
 
