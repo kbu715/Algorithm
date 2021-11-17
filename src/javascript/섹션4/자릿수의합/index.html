@@ -11,23 +11,57 @@
 <body>
   <script>
     function solution(n, arr) {
+      // let answer;
+      // let max = Number.MIN_SAFE_INTEGER;
+      // for (let x of arr) {
+      //   let sum = 0, tmp = x;
+      //   while (tmp) {
+      //     sum += (tmp % 10); // 1의 자리수
+      //     tmp = Math.floor(tmp / 10);
+      //   }
+      //   if (sum > max) {
+      //     max = sum;
+      //     answer = x;
+      //   }
+      //   else if (sum === max) {
+      //     if (x > answer) answer = x;
+      //   }
+      // }
+      // console.log(answer);
+
+
+
       let answer;
       let max = Number.MIN_SAFE_INTEGER;
-      for (let x of arr) {
-        let sum = 0, tmp = x;
-        while (tmp) {
-          sum += (tmp % 10); // 1의 자리수
-          tmp = Math.floor(tmp / 10);
-        }
+
+      for (const x of arr) {
+        let sum = 0;
+        let temp = x;
+
+
+        // 1
+        // while (temp !== 0) {
+        //   sum += (temp % 10);
+        //   temp = Math.floor(temp / 10);
+        // }
+
+
+
+        // 2 
+
+        sum = x.toString().split('').reduce((acc, v) => acc + Number(v), 0);
+
         if (sum > max) {
           max = sum;
           answer = x;
         }
-        else if (sum === max) {
+        else if (sum == max) {
           if (x > answer) answer = x;
         }
       }
+
       console.log(answer);
+
     }
 
     let arr = [128, 460, 603, 40, 521, 137, 123];

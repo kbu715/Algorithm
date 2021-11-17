@@ -10,43 +10,94 @@
 
 <body>
   <script>
-    function checkPrime(num) {
-      let flag = true;
-      if (num == 1) {
-        return false;
-      }
-      for (let i = 2; i < num; i++) {
-        if (num % i == 0) {
-          flag = false;
-          break;
+    // function checkPrime(num) {
+    //   let flag = true;
+    //   if (num == 1) {
+    //     return false;
+    //   }
+    //   for (let i = 2; i < num; i++) {
+    //     if (num % i == 0) {
+    //       flag = false;
+    //       break;
+    //     }
+    //   }
+    //   return flag;
+    // }
+
+    // function reverse(num) {
+    //   let numStr = String(num);
+    //   let reversedArray = numStr.split('').reverse();
+    //   let temp = [];
+    //   for (let i = 0; i < reversedArray.length; i++) {
+    //     if (reversedArray[i] == '0')
+    //       continue;
+    //     else
+    //       temp.push(reversedArray[i]);
+    //   }
+    //   return temp.join('');
+
+    // }
+
+
+
+
+
+    function isPrime(num) {
+      if (num === 1) return false;
+      // for (let i = 2; i < Math.floor(num / 2); i++) {
+      for (let i = 2; i < Math.sqrt(num); i++) {
+        if (num % i === 0) {
+          return false;
         }
       }
-      return flag;
+      return true;
     }
 
-    function reverse(num) {
-      let numStr = String(num);
-      let reversedArray = numStr.split('').reverse();
-      let temp = [];
-      for (let i = 0; i < reversedArray.length; i++) {
-        if (reversedArray[i] == '0')
-          continue;
-        else
-          temp.push(reversedArray[i]);
-      }
-      return temp.join('');
 
-    }
 
     function solution(arr) {
-      let answer = "";
-      for (let i = 0; i < arr.length; i++) {
-        let reversedNumStr = reverse(arr[i]);
-        if (checkPrime(Number(reversedNumStr))) {
-          answer += reversedNumStr + " ";
-        }
+      // let answer = "";
+      // for (let i = 0; i < arr.length; i++) {
+      //   let reversedNumStr = reverse(arr[i]);
+      //   if (checkPrime(Number(reversedNumStr))) {
+      //     answer += reversedNumStr + " ";
+      //   }
+      // }
+      // console.log(answer);
+
+
+
+
+
+      // let answer = [];
+      // for (let x of arr) {
+      //   let res = 0;
+      //   while (x) {
+      //     let temp = x % 10;
+      //     res = res * 10 + temp;
+      //     x = parseInt(x / 10);
+      //   }
+
+      //   if (isPrime(res)) answer.push(res);
+      // }
+
+      // console.log(answer);
+
+
+
+
+
+
+      let answer = [];
+      for (let x of arr) {
+        let res = x.toString().split('').reverse().join('');
+        res = Number(res);
+        if (isPrime(res)) answer.push(res);
       }
+
+
       console.log(answer);
+
     }
 
 
