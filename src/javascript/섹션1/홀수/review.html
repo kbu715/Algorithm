@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>홀수</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(arr) {
+
+      let answer;
+      let filtered = arr.filter(item => item % 2 === 1);
+      let sum = filtered.reduce((a, b) => a + b, 0);
+      let min = Math.min(...filtered);
+
+      answer = [sum, min]
+      return answer;
+    }
+    let input = [12, 77, 38, 41, 53, 92, 85];
+    console.log(solution(input))
+  </script>
+</body>
+
+</html>

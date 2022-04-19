@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10부제</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(numbers, day) {
+
+      let answer;
+
+      answer = numbers.filter(item => item % 10 === day).length;
+
+      return answer;
+    }
+
+    let input = [12, 20, 54, 30, 87, 91, 30], n = 0;
+    console.log(solution(input, n))
+  </script>
+</body>
+
+</html>

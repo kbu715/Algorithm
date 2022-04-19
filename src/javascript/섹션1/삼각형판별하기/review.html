@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>삼각형 판별하기</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(arr) {
+
+      let answer;
+      let max = Math.max(...arr);
+      let rest = arr.reduce((a, b) => a + b, 0) - max;
+      if (max < rest) {
+        answer = 'YES';
+      } else {
+        answer = 'NO';
+      }
+
+      return answer;
+    }
+    let input = [6, 3, 11];
+    console.log(solution(input))
+  </script>
+</body>
+
+</html>
