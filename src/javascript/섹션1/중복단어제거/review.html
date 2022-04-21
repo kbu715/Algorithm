@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>template</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(arr) {
+
+      let answer = [];
+
+      // answer.push(arr[0]);
+
+      // for (let x of arr) {
+      //   if (!answer.includes(x)) {
+      //     answer.push(x);
+      //   }
+      // }
+
+      answer = arr.filter((item, i) => arr.indexOf(item) === i)
+
+      return answer;
+    }
+    let input = ['good', 'time', 'good', 'time', 'student'];
+    console.log(solution(input))
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>가운데 문자 출력</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(arr) {
+
+      let answer;
+
+      let mid = Math.floor(arr.length / 2);
+
+      if (arr.length % 2 == 0) {
+        answer = arr.substr(mid - 1, 2);
+      } else {
+        answer = arr.substr(mid, 1);
+      }
+
+      return answer;
+    }
+    let input = 'study';
+    console.log(solution(input))
+  </script>
+</body>
+
+</html>
