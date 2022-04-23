@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회문 문자열</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(s) {
+
+      let answer = 'NO';
+
+      let reversed = s.toLowerCase().split('').reverse().join('');
+
+      if (s === reversed) {
+        answer = 'YES';
+      }
+
+      return answer;
+    }
+    let input = "goosdfsdfog";
+    console.log(solution(input))
+  </script>
+</body>
+
+</html>

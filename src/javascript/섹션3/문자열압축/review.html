@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문자열 압축</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(s) {
+
+      let answer = '';
+
+      let compare = s[0];
+      let cnt = 1;
+
+      for (let i = 1; i < s.length; i++) {
+        if (s[i] === compare) {
+          cnt++;
+        } else {
+          if (cnt > 1) {
+            answer += (compare + cnt);
+          } else {
+            answer += compare;
+          }
+          compare = s[i];
+          cnt = 1;
+        }
+      }
+      if (cnt > 1) {
+        answer += (compare + cnt);
+      } else {
+        answer += compare;
+      }
+
+
+      return answer;
+    }
+    let input = "KKHgggSSSSSSSE";
+    console.log(solution(input))
+  </script>
+</body>
+
+</html>

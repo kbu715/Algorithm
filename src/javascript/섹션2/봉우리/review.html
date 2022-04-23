@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>봉우리</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(arr) {
+      // 상 하 좌 우 순
+      const dr = [-1, 1, 0, 0]; // 행 
+      const dc = [0, 0, -1, 1]; // 열
+      const n = arr.length;
+
+      let answer = 0;
+
+
+      for (let r = 1; r < n - 1; r++) {
+        for (let c = 1; c < n - 1; c++) {
+          let isBong = true;
+          for (let d = 0; d < 4; d++) {
+            let nr = r + dr[d];
+            let nc = c + dc[d];
+
+            if (nr >= 0 && nr < n && nc >= 0 && nc < n && arr[nr][nc] >= arr[r][c]) {
+              isBong = false;
+              break;
+            }
+          }
+          if (isBong) {
+            answer++;
+          }
+        }
+      }
+
+
+      return answer;
+    }
+    let input = [[0, 0, 0, 0, 0, 0, 0], [0, 5, 3, 7, 2, 3, 0], [0, 3, 7, 1, 6, 1, 0], [0, 7, 2, 5, 3, 4, 0], [0, 4, 3, 6, 4, 1, 0], [0, 8, 7, 3, 5, 2, 0], [0, 0, 0, 0, 0, 0, 0]];
+    console.log(solution(input))
+  </script>
+</body>
+
+</html>

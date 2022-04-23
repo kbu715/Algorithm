@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>유효한 펠린드롬</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(s) {
+
+      let answer = 'NO';
+      const pattern = /[a-z]/;
+      let filtered = s.toLowerCase().trim().split('').filter(c => pattern.test(c)).join('');
+      let reversed = filtered.split('').reverse().join('');
+
+      console.log(reversed);
+      console.log(filtered);
+
+      if (reversed === filtered) {
+        return 'YES';
+      }
+
+      return answer;
+    }
+    let input = "found7, time: study; Yduts; emit, 7Dnuof";
+    console.log(solution(input))
+  </script>
+</body>
+
+</html>
