@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>자릿수의 합</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(arr) {
+
+      let answer = 0;
+      let max = Number.MIN_SAFE_INTEGER;
+      let sum = 0;
+
+      for (const x of arr) {
+        sum = 0;
+
+        let temp = x;
+
+        // 1
+        // while (temp > 0) {
+        //   sum += temp % 10;
+        //   temp = Math.floor(temp / 10);
+        // }
+
+
+        // 2
+        sum = x.toString().split('').reduce((a, b) => a + Number(b), 0);
+
+
+        if (sum > max) {
+          max = sum;
+          answer = max;
+        }
+
+        if (sum === max) {
+          if (answer < x) {
+            answer = x;
+          }
+        }
+      }
+
+      return answer;
+    }
+    let input = [128, 460, 603, 40, 521, 137, 123];
+    console.log(solution(input))
+  </script>
+</body>
+
+</html>
