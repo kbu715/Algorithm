@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>멘토링</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(arr) {
+      let answer = [];
+      let temp = [];
+      // 학생 수
+      const N = arr[0].length;
+      // 테스트 수
+      const M = arr.length;
+
+      for (let k = 0; k < M; k++) {
+        for (let i = 0; i < N; i++) {
+          for (let j = i + 1; j < N; j++) {
+            let A = arr[k][i];
+            let B = arr[k][j];
+
+            temp.push([A, B].join(''));
+          }
+        }
+      }
+
+      for (const x of temp) {
+        if (!temp.includes(x.split('').reverse().join(''))) {
+          if (!answer.includes(x)) {
+            answer.push(x);
+          }
+        }
+      }
+
+      answer = answer.map(item => item.split('').map(item => Number(item)));
+
+      return answer;
+    }
+
+    let input = [[3, 4, 1, 2], [4, 3, 2, 1], [3, 1, 4, 2]];
+    console.log(solution(input))
+  </script>
+</body>
+
+</html>

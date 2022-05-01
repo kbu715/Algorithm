@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>졸업선물</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(N, M, arr) {
+
+      let answer;
+      let temp = arr;
+      for (let i = 0; i < N; i++) {
+        let sum = 0;
+        let max = Number.MIN_SAFE_INTEGER;
+        let temp = [];
+        temp = arr.map((item, idx) => {
+          if (idx === i) {
+            return [item[0] / 2, item[1]];
+          } else {
+            return item;
+          }
+        }).sort((a, b) => ((a[0] + a[1]) - (b[0] + b[1]))); // 총 비용으로 오름차순으로 정렬!!!
+
+        console.log(temp);
+
+        let cnt = 0;
+        for (const x of temp) {
+          sum += (x[0] + x[1]);
+
+          if (M >= sum) {
+            cnt++;
+          } else {
+            max = Math.max(max, cnt);
+          }
+          console.log(sum);
+        }
+        answer = max;
+
+      }
+
+      return answer;
+    }
+    let n = 5;
+    let limit = 28;
+    let arr = [[6, 6], [2, 2], [4, 3], [4, 5], [10, 3]];
+    console.log(solution(n, limit, arr))
+  </script>
+</body>
+
+</html>

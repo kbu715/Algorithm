@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K번째 큰수</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(arr, K, N) {
+
+      let answer = new Set();
+      let sum = 0;
+
+      for (let i = 0; i < N - 2; i++) {
+        for (let j = i + 1; j < N - 1; j++) {
+          for (let k = j + 1; k < N; k++) {
+            sum += arr[i] + arr[j] + arr[k];
+            answer.add(sum);
+            sum = 0;
+          }
+
+        }
+      }
+
+      answer = Array.from(answer).sort((a, b) => b - a);
+
+
+      return answer[K - 1]; // 3번째로 큰 수
+    }
+    let arr = [13, 15, 34, 23, 45, 65, 33, 11, 26, 42];
+    let k = 3;
+    let n = 10;
+    console.log(solution(arr, k, n))
+  </script>
+</body>
+
+</html>
