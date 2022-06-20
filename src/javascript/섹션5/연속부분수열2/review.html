@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>연속부분수열2</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(n, m, arr) {
+
+      let answer = 0;
+      let lt = 0, sum = 0;
+
+      for (let rt = 0; rt < n; rt++) {
+        sum = sum + arr[rt];
+        while (sum > m) {
+          sum = sum - arr[lt++];
+        }
+
+        // rt값이 증가한 후 조건에 충족하면
+        // (rt - lt + 1) 만큼 경우의 수가 존재한다.
+        answer = answer + (rt - lt + 1);
+
+      }
+
+      return answer;
+    }
+    let N = 5;
+    let M = 5;
+    let arr = [1, 3, 1, 2, 3];
+    console.log(solution(N, M, arr));
+  </script>
+</body>
+
+</html>
