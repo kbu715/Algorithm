@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>괄호 문자 제거</title>
+</head>
+
+<body>
+
+
+  <script>
+    // 입력된 문자열에서 소괄호  ( ) 사이에 존재하는 모든 문자를 제거하고 남은 문자만
+    // 출력하는 프로그램을 작성하세요.
+    function solution(str) {
+      let stack = [];
+      for (const x of str) {
+        if (stack.length > 0 && x === ')') {
+
+          // 1번 방법
+
+          // while (stack[stack.length - 1] !== '(')
+          //   stack.pop();
+          // stack.pop();
+
+          // 2번 방법
+          while (stack.pop() !== '(');
+
+        } else stack.push(x);
+      }
+
+      return stack.join('');
+    }
+    let str = "(A(BC)D)EF(G(H)(IJ)K)LM(N)";
+    console.log(solution(str));
+  </script>
+</body>
+
+</html>
