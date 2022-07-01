@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>후위식 연산</title>
+</head>
+
+<body>
+
+
+  <script>
+    function calc(num1, num2, op) { // op: operator
+      switch (op) {
+        case '+':
+          return num2 + num1;
+        case '-':
+          return num2 - num1;
+        case '*':
+          return num2 * num1;
+        case '/':
+          return num2 / num1;
+
+        default:
+          break;
+      }
+    }
+    function solution(str) {
+
+      let answer;
+      const regex = /[0-9]/;
+
+      let stack = [];
+      for (const x of str) {
+        if (regex.test(x)) stack.push(Number(x));
+        else stack.push(calc(stack.pop(), stack.pop(), x));
+      }
+
+      answer = stack.pop();
+      return answer;
+    }
+
+    let str = "352+*9-";
+    console.log(solution(str));
+
+  </script>
+</body>
+
+</html>
