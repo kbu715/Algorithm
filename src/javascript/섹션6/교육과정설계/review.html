@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>교육과정설계</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(e, w) {
+
+      let answer = 'YES';
+
+      let queue = w.split('');
+      const need = e.split('');
+
+      while (queue.length !== e.length) {
+        if (need.includes(queue[0])) queue.push(queue.shift());
+        else queue.shift();
+      }
+
+      if (queue.join('') !== e) answer = 'NO';
+
+      return answer;
+    }
+    let essential = "CBA";
+    let whole = "CABDGE";
+
+    console.log(solution(essential, whole));
+  </script>
+</body>
+
+</html>
