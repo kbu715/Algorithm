@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>버블 정렬</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(arr) {
+
+      let answer = arr;
+
+      for (let i = 0; i < answer.length - 1; i++) {
+        for (let j = 0; j < answer.length - 1 - i; j++) {
+          if (answer[j] > answer[j + 1]) [answer[j], answer[j + 1]] = [answer[j + 1], answer[j]]; // 맨 뒤의 값이 먼저 정해진다. (버블 정렬)
+        }
+      }
+      return answer;
+    }
+    let arr = [13, 5, 11, 7, 23, 15];
+    console.log(solution(arr));
+  </script>
+</body>
+
+</html>
