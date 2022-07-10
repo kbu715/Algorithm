@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>삽입정렬</title>
+</head>
+
+<body>
+
+
+  <script>
+    // 어디가서 손코딩 할정도로 알아두자!
+    function solution(arr) {
+
+      let answer = arr;
+      let temp;
+      for (let i = 1; i < answer.length; i++) {
+        temp = answer[i];
+        let j;
+        for (j = i - 1; j >= 0; j--) {
+          if (answer[j] > temp)
+            answer[j + 1] = answer[j];
+          else
+            break;
+        }
+        answer[j + 1] = temp;
+
+      }
+
+      return answer;
+    }
+    let arr = [11, 7, 5, 6, 10, 9];
+    console.log(solution(arr));
+  </script>
+</body>
+
+</html>
