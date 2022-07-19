@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LRU 카카오 캐시변형: 삽입정렬 응용</title>
+</head>
+
+<body>
+
+
+  <script>
+    /*
+    LRU 알고리즘은 Least Recently Used 의 약자로 직역하자면 가장 최근에 사용되지 않 은 것 정도의 의미를 가지고 있습니다. 
+    캐시에서 작업을 제거할 때 가장 오랫동안 사용하지 않은 것을 제거하겠다는 알고리즘입니다.
+    */
+   // 자바스크립트 내장함수 이용한 풀이
+    function solution(s, nums) {
+
+      let answer = [];
+
+      for (const x of nums) { // n개의 작업번호 배열
+        let tmp = x;
+        const idx = answer.findIndex((v) => v === x) // 캐시 히트인지 캐시 미스인지 판단하기 위한 작업
+        if (idx >= 0) {
+            answer.splice(idx, 1);
+            answer.unshift(tmp);
+        } else {
+            answer.unshift(tmp);
+            if (answer.length > s) answer.pop();
+        }
+        // 캐시 미슨지 캐시 히튼지 상관없이 무조건 아래는 공통부분
+        answer[0] = tmp;
+        
+        }
+        return answer;
+    }
+    let s = 5;
+    let n = 9;
+    let nums = [1, 2, 3, 2, 6, 2, 3, 5, 7];
+    console.log(solution(s, nums))
+  </script>
+</body>
+
+</html>
