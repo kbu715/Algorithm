@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>장난꾸러기 현수</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(array) {
+
+      let answer = [];
+
+      const origin = [...array];
+      const sorted = array.sort((a, b) => a - b); // arr.sort() : 문자정렬... 조심해야된다.
+    //   console.log(origin)
+    //   console.log(sorted)
+
+      for (let i = 0; i < array.length; i++) {
+        if (origin[i] !== sorted[i]) {
+            answer.push(i + 1);
+        }
+      }
+
+      return answer;
+    }
+    let input = [120, 125, 152, 130, 135, 135, 143, 127, 160];
+    // let input = [120, 130, 150, 150, 130, 150];
+    console.log(solution(input))
+
+
+  </script>
+</body>
+
+</html>
