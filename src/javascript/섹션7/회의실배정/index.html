@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회의실 배정 (그리디알고리즘)</title>
+</head>
+
+<body>
+
+  <script>
+
+    function solution(arr) {
+
+      let answer;
+      let n = arr.length;
+      // 끝나는 시간이 빠른 순으로 정렬을 합니다.
+      // 끝나는 시간이 같으면 시작시간으로 정렬을 합니다.
+      arr.sort((a, b) => {
+        if (a[1] === b[1]) {
+            return a[0] - b[0];
+        }
+        return a[1] - b[1];
+      })
+      answer = 1; // 첫번째 회의는 무조건 +1
+
+      let currentEnd = arr[0][1];
+      for (let i = 0; i < arr.length - 1; i++) {
+        
+        const nextStart = arr[i+1][0];
+
+        // 현재 회의끝나는 시간이 다음 회의의 시작시간보다 작아야만 적용가능하겠죠?
+        if (currentEnd <= nextStart) {
+            answer++;
+            currentEnd = arr[i+1][1];
+        }
+        else continue;
+        
+      }
+
+      return answer;
+    }
+    let input = [[1, 4], [2, 3], [3, 5], [4, 6],[5, 7]];
+    let input2 = [[3, 3], [1, 3], [2, 3]];
+    console.log(solution(input));
+  </script>
+</body>
+
+</html>
