@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이진 트리 순회 DFS(깊이 우선 탐색)</title>
+</head>
+
+<body>
+
+
+  <script>
+    // 전위 순회 출력
+    function solution(v) { // vertext : 정점
+
+      let answer = '';
+
+      function DFS(v) {
+        if(v > 7) {
+            return;
+        } else {
+            answer += v + ' '; // 이 행의 순서에 따라 중위 순회, 후위 순회...
+            DFS(v*2); // 왼쪽 child
+           DFS(v*2+1); // 오른쪽 child
+        }
+      }
+
+      DFS(v);
+
+      return answer;
+    }
+    let input = 1;
+    console.log(solution(input))
+  </script>
+</body>
+
+</html>
