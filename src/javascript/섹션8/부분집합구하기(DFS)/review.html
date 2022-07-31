@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>부분 집합 구하기 (DFS)</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(n) {
+
+      let answer = [];
+      let flag = Array.from({ length: n+1 }).fill(0);
+
+      function DFS(v) { // v = vertex
+
+        if (v === n + 1) {
+            let tmp = [];
+            for (let i = 1; i <= n; i++) {
+                if (flag[i] === 1) tmp.push(i);   
+            }
+            if (tmp.length > 0) answer.push(tmp);
+        }
+        else {
+            flag[v] = 1;
+            DFS(v+1);
+            flag[v] = 0;
+            DFS(v+1);
+        }
+      }
+      DFS(1);
+
+      return answer;
+    }
+    let input = 3;
+    console.log(solution(input))
+  </script>
+</body>
+
+</html>
