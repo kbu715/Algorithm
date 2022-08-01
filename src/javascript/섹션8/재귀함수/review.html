@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>재귀 함수</title>
+</head>
+
+<body>
+
+
+  <script>
+    // 스택프레임 그려가면서 공부
+    function DFS(n) {
+        if (n === 0) return;
+        DFS(n-1);
+        console.log(n);
+    }
+    let input = 3;
+    console.log(DFS(input))
+  </script>
+</body>
+
+</html>
