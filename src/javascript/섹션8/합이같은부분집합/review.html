@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>합이 같은 부분집합</title>
+</head>
+
+<body>
+
+
+  <script>
+    function sumAll(arr) {
+        return arr.reduce((a, b) => a + b, 0);
+    }
+    function solution(arr) {
+
+      let answer = "NO", stop = 0;
+      let n = arr.length;
+      let total = sumAll(arr);
+
+      if (total % 2 === 1) answer = "NO"; // 홀수면 성립자체가 안되기 때문에
+
+      let flag = Array.from({length: n + 1}, () => false)
+      function DFS(v) {
+        if (stop) return;
+        if (v === n + 1) {
+            let temp = [];
+            for (let i = 1; i <= n; i++) {
+                if (flag[i]) temp.push(arr[i-1]);
+            }
+            if (sumAll(temp) === total / 2) {
+                answer = "YES";
+                stop = 1; // 다른 재귀들도 바로 끝내게 하기 위해
+            } 
+        }
+        else {
+            flag[v] = true;
+            DFS(v+1);
+            flag[v] = false;
+            DFS(v+1);
+        }
+      }
+
+      DFS(1);
+      return answer;
+    }
+    let input = [1, 3, 5, 6, 7, 10, 12];
+    console.log(solution(input))
+  </script>
+</body>
+
+</html>
