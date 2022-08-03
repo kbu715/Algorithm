@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>바둑이 승차</title>
+</head>
+
+<body>
+
+
+  <script>
+    function getSum(arr) {
+        return arr.reduce((a, b) => a + b, 0);
+    }
+    function solution(c, arr) {
+
+      let n = arr.length;
+      let max = Number.MIN_SAFE_INTEGER;
+      let flag = Array.from({ length: n }, () => false);
+
+        function DFS(v) {
+            if (v === n) {
+                let temp = [];
+                for (let i = 0; i < n; i++) {
+                    if (flag[i]) temp.push(arr[i]); 
+                }
+                const total = getSum(temp);
+                if (c >= total && total > max) {
+                    max = total;
+                }
+            } else {
+                flag[v] = false;
+                DFS(v+1);
+                flag[v] = true;
+                DFS(v+1);
+            }
+        }
+
+        DFS(0);
+
+      return max;
+    }
+    let c = 259, arr = [81, 58, 42, 33, 61];
+    console.log(solution(c, arr))
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>바둑이 승차</title>
+</head>
+
+<body>
+
+
+  <script>
+    
+    function solution(c, arr) {
+
+        let answer = Number.MIN_SAFE_INTEGER;
+        let n = arr.length;
+
+        function dfs(L, sum) {
+            if (sum > c) return;
+            if (L === n) {
+                answer = Math.max(answer, sum);
+            } else {
+                dfs(L+1, sum+arr[L]);
+                dfs(L+1, sum);
+            }
+        }
+        
+
+        dfs(0, 0);
+        return answer;
+
+    }
+    let c = 259, arr = [81, 58, 42, 33, 61];
+    console.log(solution(c, arr))
+  </script>
+</body>
+
+</html>
