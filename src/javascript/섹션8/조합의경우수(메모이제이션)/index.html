@@ -12,7 +12,7 @@
   <script>
     function solution(n, r) {
       let answer;
-      let d = Array.from(Array(35), () => Array(35).fill(0)); // 3행5열
+      let d = Array.from(Array(35), () => Array(35).fill(0));
       console.log(d);
       function comb(n, r) {
         if (d[n][r] != 0) return d[n][r]; // 메모이제이션
