@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>중복 순열 - 재귀</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(n, m) {
+
+      let answer = [];
+
+      let temp = Array.from({length: m}).fill(0);
+    //   console.log(temp);
+
+      function DFS(v) {
+        if (v === m) {
+            answer.push([...temp]); // answer.push(temp.slice())
+            return;
+        } else {
+            for (let i = 1; i <= n; i++) {
+                temp[v] = i;
+                DFS(v+1)
+            }
+        }
+      }
+
+      DFS(0);
+
+      return answer;
+    }
+    let n = 3, m = 2;
+    console.log(solution(n, m))
+  </script>
+</body>
+
+</html>
