@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>수열 추측하기 (수열, 이항계수 이용)</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(n, f) {
+
+      let answer, end = false; // For Cut Edge Tech
+      let memo = Array.from(Array(11), () => Array(11).fill(0)); // memoization
+      let checked = Array.from({length: n+1}, () => false); // check array
+      let selected = Array.from({length: n}, () => 0); // for permutation
+
+      let b = Array.from({length: n}, () => 0); // 이항계수 3c0, 3c1, 3c2, 3c3 를 담을 배열
+
+
+      // Combination
+      function comb(n, r) {
+        if (memo[n][r] > 0) return memo[n][r];
+        if (n === r || r === 0) return 1;
+        else return memo[n][r] = comb(n-1, r) + comb(n-1, r-1);
+      }
+
+      // Permutation
+      function DFS(L, sum) {
+        if (end) return;
+        if (sum === f && L === n) {
+
+            answer = [...selected]; // answer = selected.slice();
+            end = true; // 끝내라.
+
+        } else {
+            for (let i = 1; i <= n; i++) {
+                if (checked[i]) continue;
+                else {
+                    checked[i] = true;
+                    selected[L] = i;
+                    DFS(L+1, sum + (b[L] * selected[L]))
+                    checked[i] = false;
+                }
+            }
+        }
+
+      }
+
+      // 이항계수 만들어주면서
+      for (let i = 0; i < n; i++) {
+        b[i] = comb(n-1, i);
+      }
+      DFS(0, 0);
+
+      return answer;
+    }
+
+    let N = 4;
+    let F = 16;
+    console.log(solution(N, F));
+  </script>
+</body>
+
+</html>

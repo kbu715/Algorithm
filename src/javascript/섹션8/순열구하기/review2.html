@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>순열구하기</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(r, arr) {
+
+      let cnt = 0;
+      let n = arr.length;
+      let checked = Array.from({length: n}, () => false);
+      let selected = Array.from({length: r}, () => 0);
+
+      function DFS(v) {
+        if (v === r) {
+            console.log(selected);
+            cnt++;
+        } else {
+            for (let i = 0; i < n; i++) {
+                if (checked[i]) continue;
+                else {
+                    checked[i] = true;
+                    selected[v] = arr[i];
+                    DFS(v+1);
+                    checked[i] = false;
+                }
+            }
+        }
+      }
+
+      DFS(0);
+      console.log(cnt);
+    }
+
+    let arr = [3, 6, 9];
+    solution(2, arr);
+  </script>
+</body>
+
+</html>
