@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>수들의 조합</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(n, r, m, arr) {
+
+      let answer = 0;
+      let selected = Array.from({length: r}, () => 0);
+
+      function DFS(L, start, sum) {
+        if (L === r) {
+            // console.log(selected, sum);
+            if (sum % 6 === 0) answer++;
+        } else {
+            for (let i = start; i < n; i++) {
+                selected[L] = arr[i];
+                DFS(L+1, i+1, sum + selected[L]);
+            }
+        }
+      }
+
+      DFS(0, 0, 0);
+
+      return answer;
+    }
+
+    let N = 5;
+    let R = 3;
+    let M = 6;
+    let arr = [2, 4, 5, 8, 12]
+
+    console.log(solution(N, R, M, arr));
+  </script>
+</body>
+
+</html>
