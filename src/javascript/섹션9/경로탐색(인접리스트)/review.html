@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>인접리스트 노드 개수가 많을 때</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(n, arr) {
+      let answer = 0;
+      let graph = Array.from(Array(n + 1), () => Array()); // 인접리스트 만드는 방법
+      let visited = Array.from({ length: n + 1 }, () => false);
+      let path = [];
+      for (let [a, b] of arr) {
+        graph[a].push(b); // 인접리스트
+      }
+
+      function DFS(v) { // vertex
+        if (v === n) {
+          answer++;
+        //   console.log(path);
+        }
+        else {
+          for (let i = 0; i < graph[v].length; i++) {
+            if (visited[graph[v][i]] === false) {
+              visited[graph[v][i]] = true;
+              path.push(graph[v][i]);
+              DFS(graph[v][i]);
+              visited[graph[v][i]] = false;
+              path.pop();
+            }
+          }
+        }
+      }
+
+      visited[1] = true;
+      path.push(1);
+      DFS(1);
+      return answer;
+    }
+
+    let arr = [[1, 2], [1, 3], [1, 4], [2, 1], [2, 3], [2, 5], [3, 4], [4, 2], [4, 5]];
+    console.log(solution(5, arr));
+  </script>
+</body>
+
+</html>
