@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>미로탐색 DFS</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(arr) {
+
+      let answer = 0;
+      // 상하좌우
+      let dx = [-1, 1, 0, 0]; // 행
+      let dy = [0, 0, -1, 1]; // 열
+
+      // 방문 배열
+      let visited = arr.slice(); // 1은 벽 // 0은 통로 // 2는 방문!
+
+
+
+      function DFS(x, y) {
+        if (x === 6 && y == 6) {
+            answer++;
+        } else {
+            for (let i = 0; i < 4; i++) {
+                let nx = x + dx[i];
+                let ny = y + dy[i];
+
+                if (nx >= 0 && ny >= 0 && nx < 7 && ny < 7 && visited[nx][ny] !== 1 && visited[nx][ny] !== 2) {
+                    visited[nx][ny] = 2;
+                    DFS(nx, ny);
+                    visited[nx][ny] = 0;
+                }
+            }
+        }
+      }
+      visited[0][0] = 2; // 일단 시작점은 방문!
+      DFS(0, 0); // DFS시작
+
+      return answer;
+    }
+
+    let arr = [
+      [0, 0, 0, 0, 0, 0, 0],
+      [0, 1, 1, 1, 1, 1, 0],
+      [0, 0, 0, 1, 0, 0, 0],
+      [1, 1, 0, 1, 0, 1, 1],
+      [1, 1, 0, 0, 0, 0, 1],
+      [1, 1, 0, 1, 1, 0, 0],
+      [1, 0, 0, 0, 0, 0, 0],
+    ];
+    console.log(solution(arr));
+  </script>
+</body>
+
+</html>
