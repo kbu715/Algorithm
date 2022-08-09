@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>섬나라 아일랜드 - BFS</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(arr) {
+
+
+      let answer = 0;
+
+      let n = arr.length;
+      let board = arr.slice();
+
+       // 8방향
+       let dx = [-1, -1, 0, 1, 1, 1, 0, -1]
+       let dy = [0, 1, 1, 1, 0, -1, -1, -1]
+
+       let queue = [];
+
+
+       for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+            if (board[i][j] === 1) {
+                board[i][j] = 0;
+                queue.push([i, j]);
+
+                answer++;
+
+                while(queue.length) {
+                    let [x, y] = queue.shift();
+                    console.log(x, y);
+
+                    for (let d = 0; d < 8; d++) {
+                        let nx = x + dx[d];
+                        let ny = y + dy[d];
+
+                        if (nx >= 0 && ny >= 0 && nx < n && ny < n && board[nx][ny] === 1) {
+                            board[nx][ny] = 0;
+                            queue.push([nx, ny]);
+                        }
+                    }
+                }
+                console.log("BFS END")
+            }
+        }
+       }
+
+      return answer;
+    }
+    let arr = [[1, 1, 0, 0, 0, 1, 0],
+    [0, 1, 1, 0, 1, 1, 0],
+    [0, 1, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 0, 1, 1],
+    [1, 1, 0, 1, 1, 0, 0],
+    [1, 0, 0, 0, 1, 0, 0],
+    [1, 0, 1, 0, 1, 0, 0]];
+
+    console.log(solution(arr));
+  </script>
+</body>
+
+</html>
