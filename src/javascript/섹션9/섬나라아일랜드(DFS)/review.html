@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>섬나라 아일랜드 DFS</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(arr) {
+        let answer = 0;
+        let n = arr.length;
+        // 8방향
+        let dx = [-1, -1, 0, 1, 1, 1, 0, -1]
+        let dy = [0, 1, 1, 1, 0, -1, -1, -1]
+
+        // 방문 배열
+        let visited = Array.from({length: n}, () => Array(n).fill(0));
+        // console.log(visited);
+        function DFS(x, y) {
+                visited[x][y] = answer;
+
+                for (let d = 0; d < 8; d++) {
+                    let nx = x + dx[d];
+                    let ny = y + dy[d];
+                    
+                    if (nx >= 0 && ny >= 0 && nx < n && ny < n && visited[nx][ny] === 0 && arr[nx][ny] === 1) {
+                        visited[nx][ny] = answer;
+                        
+                        DFS(nx, ny);
+                    }
+                }
+
+        }
+        for (let i = 0; i < n; i++) {
+            for (let j = 0; j < n; j++) {
+                if (arr[i][j] === 1 && visited[i][j] === 0) {
+                    answer++;
+                    DFS(i, j);
+                }
+            }
+        }
+        console.log(visited)
+
+
+
+      return answer;
+    }
+    let arr = [[1, 1, 0, 0, 0, 1, 0],
+    [0, 1, 1, 0, 1, 1, 0],
+    [0, 1, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 0, 1, 1],
+    [1, 1, 0, 1, 1, 0, 0],
+    [1, 0, 0, 0, 1, 0, 0],
+    [1, 0, 1, 0, 1, 0, 0]];
+
+    console.log(solution(arr));
+  </script>
+</body>
+
+</html>
