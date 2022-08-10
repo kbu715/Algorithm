@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>계단 오르기 - DP</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(n) {
+        
+        let dy = Array.from({ length: n + 1 }, () => 0);
+        
+        dy[1] = 1;
+        dy[2] = 2;
+        
+        for (let i = 3; i <= n; i++) {
+          dy[i] = dy[i - 1] + dy[i - 2];
+        }
+        console.log(dy[n]);
+        
+}
+
+    let N = 7;
+    solution(N);
+  </script>
+</body>
+
+</html>
