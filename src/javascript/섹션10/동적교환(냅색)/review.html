@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>동적교환(냅색 알고리즘)</title>
+</head>
+
+
+<body>
+  <script>
+    function solution(m, coin) {
+      let answer = 0;
+      let dy = Array.from({length: m+1}, () => 1000)
+      dy[0] = 0
+      for (let i = 0; i < coin.length; i++) {
+        for (let j = coin[i]; j <= m; j++) {
+            dy[j] = Math.min(dy[j], dy[j-coin[i]] + 1)
+        }
+      }
+
+      return dy[m]
+    }
+
+    let coin = [1, 2, 5]
+    console.log(solution(15, coin))
+  </script>
+</body>
+
+</html>
