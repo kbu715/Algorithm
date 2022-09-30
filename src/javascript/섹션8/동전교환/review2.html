@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>동전 교환 DFS-Cut Edge Tech</title>
+</head>
+
+<body>
+
+
+  <script>
+    function solution(n, m, arr) {
+
+      let answer;
+      let min = Number.MAX_SAFE_INTEGER
+
+      function DFS(L, sum) {
+        if (sum >= m) {
+            if (sum === m && min > L) {
+                min = L
+            } else {
+                return
+            }
+        } else {
+            for (let i = 0; i < n; i++) {
+                DFS(L + 1, sum + arr[i])
+            }
+        }
+      }
+      DFS(0, 0)
+      answer = min
+      return answer;
+    }
+
+    let N = 3;
+    let arr = [1, 2, 5];
+    let M = 15;
+    console.log(solution(N, M, arr));
+  </script>
+</body>
+
+</html>
