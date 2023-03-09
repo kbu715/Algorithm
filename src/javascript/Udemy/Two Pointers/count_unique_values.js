@@ -1,7 +1,7 @@
 function countUniqueValues(arr) {
-  // add whatever parameters you deem necessary - good luck!
   if (arr.length < 1) return 0;
 
+  // two pointers
   let i = 0,
     j = 0;
 
