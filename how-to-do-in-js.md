@@ -592,6 +592,50 @@
   ```
 <br>
 
+### :punch: 순열 구하기
+```javascript
+function getPermutation(arr, selectNum) {
+    const result = [];
+    if (selectNum === 1) return arr.map((v) => [v]);
+
+    arr.forEach((fixed, index, origin) => {
+      // 해당 fixed를 제외한 나머지 배열 
+      const rest = [...origin.slice(0, index), ...origin.slice(index+1)] 
+      // 나머지에 대해서 순열을 구한다.
+      const permutations = getPermutation(rest, selectNum - 1); 
+      //  돌아온 순열에 fixed값 붙이기
+      const attached = permutations.map((perm) => [fixed, ...perm]); 
+      // 배열 spread syntax 로 모두다 push
+      result.push(...attached); 
+    });
+
+    return result;
+}
+```
+
+### :punch: 조합 구하기
+```javascript
+// 조합 구하기
+
+function getCombination(arr, selectNum) {
+    const result = [];
+    if (selectNum === 1) return arr.map((v) => [v]);
+
+    arr.forEach((fixed, index, origin) => {
+      // 해당 fixed를 제외한 나머지 배열
+      const rest = origin.slice(index + 1); 
+      // 나머지에 대해서 조합을 구한다.
+      const combinations = getCombination(rest, selectNum - 1); 
+      //  돌아온 조합에 fixed값 붙이기
+      const attached = combinations.map((comb) => [fixed, ...comb]); 
+      // 배열 spread syntax 로 모두다 push
+      result.push(...attached); 
+    });
+
+    return result;
+}
+
+```
 ### :punch: 대문자는 소문자로, 소문자는 대문자로
   ```js
   const swapUpperWithLower = (str) => {
