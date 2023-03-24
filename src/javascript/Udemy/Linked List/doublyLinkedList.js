@@ -100,8 +100,8 @@ class DoublyLinkedList {
         current = current.prev;
         count--;
       }
-      return current;
     }
+    return current;
   }
 
   set(index, val) {
