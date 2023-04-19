@@ -1,5 +1,25 @@
 # How to Do in JS
 
+### :punch: 약수 구하기
+
+```js
+function getDivisors(num) {
+  const divisors = [];
+  
+  for (let i = 1; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) {
+      divisors.push(i);
+      if (i !== num / i) {
+        divisors.push(num / i);
+      }
+    }
+  }
+  
+  return divisors;
+}
+
+```
+
 ### :punch: 알파벳순, 오름차순, 내림차순 정렬하기
 - `arr.sort()`
 
