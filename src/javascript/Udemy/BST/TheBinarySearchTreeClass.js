@@ -69,11 +69,12 @@ class BinarySearchTree {
     return false;
   }
 
-  bfs() {
+  BFS() {
     let node = this.root,
       visited = [],
       queue = [];
     queue.push(node);
+
     while (queue.length) {
       node = queue.shift();
       visited.push(node.value);
@@ -88,42 +89,33 @@ class BinarySearchTree {
   DFSPreOrder() {
     let visited = [];
     let current = this.root;
-
-    // helper function - traverse
     function traverse(node) {
-      visited.push(node);
+      visited.push(node.value);
       if (node.left) traverse(node.left);
       if (node.right) traverse(node.right);
     }
-
     traverse(current);
     return visited;
   }
-
   DFSPostOrder() {
     let visited = [];
     let current = this.root;
-
     function traverse(node) {
       if (node.left) traverse(node.left);
       if (node.right) traverse(node.right);
-      visited.push(node);
+      visited.push(node.value);
     }
-
     traverse(current);
     return visited;
   }
-
   DFSInOrder() {
     let visited = [];
     let current = this.root;
-
     function traverse(node) {
       if (node.left) traverse(node.left);
-      visited.push(node);
+      visited.push(node.value);
       if (node.right) traverse(node.right);
     }
-
     traverse(current);
     return visited;
   }
